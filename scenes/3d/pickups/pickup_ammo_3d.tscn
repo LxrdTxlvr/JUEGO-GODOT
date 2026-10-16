@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://pa3dammo001"]
+
+[ext_resource type="Script" path="res://scripts/3d/pickups/pickup_3d.gd" id="1_pickupscript"]
+[ext_resource type="Texture2D" path="res://assets/generated/pickup_ammo_hd.png" id="2_ammotex"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_pickup"]
+radius = 0.65
+
+[node name="PickupAmmo3D" type="Area3D"]
+collision_layer = 32
+collision_mask = 2
+script = ExtResource("1_pickupscript")
+pickup_type = 0
+amount = 24
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+shape = SubResource("SphereShape3D_pickup")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+billboard = 1
+shaded = true
+alpha_cut = 1
+texture_filter = 5
+texture = ExtResource("2_ammotex")
+pixel_size = 0.003
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+light_color = Color(1, 0.9, 0.4, 1)
+light_energy = 1.2
+omni_range = 2.5

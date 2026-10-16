@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://bn2kw9vrtxq4e"]
+
+[ext_resource type="Script" path="res://scripts/entities/pickups/pickup.gd" id="1_pickupscript"]
+[ext_resource type="Texture2D" path="res://assets/generated/pickup_ammo.png" id="2_ammotex"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pickup"]
+radius = 18.0
+
+[node name="PickupAmmo" type="Area2D"]
+z_index = 1
+collision_layer = 32
+collision_mask = 2
+monitorable = false
+script = ExtResource("1_pickupscript")
+pickup_type = 1
+ammo_amount = 36
+bob_amplitude = 3.0
+bob_speed = 3.2
+lifetime = 90.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_ammotex")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_pickup")

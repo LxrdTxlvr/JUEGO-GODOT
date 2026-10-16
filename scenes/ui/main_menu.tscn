@@ -1,0 +1,540 @@
+[gd_scene format=3 uid="uid://ck2vqyamwp4rn"]
+
+[ext_resource type="Script" uid="uid://brx30cdcfgf8h" path="res://scripts/ui/main_menu.gd" id="1_menuscript"]
+[ext_resource type="Texture2D" uid="uid://cou08o25rh80o" path="res://assets/generated/menu_bg_city.png" id="2_bgtex"]
+[ext_resource type="Texture2D" uid="uid://currd4fi1xaui" path="res://assets/generated/player_idle.png" id="3_idletex"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_header_badge"]
+bg_color = Color(0.85, 0.55, 0.1, 0.25)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.78, 0.25, 0.8)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_diff_card"]
+bg_color = Color(0.12, 0.08, 0.06, 0.75)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.85, 0.65, 0.2, 0.5)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tab_active"]
+bg_color = Color(0.42, 0.22, 0.08, 0.95)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.85, 0.25, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tab_inactive"]
+bg_color = Color(0.12, 0.12, 0.16, 0.75)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.4, 0.45, 0.55, 0.4)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_normal"]
+bg_color = Color(0.12, 0.11, 0.14, 0.85)
+border_width_left = 2
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.7, 0.55, 0.25, 0.45)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_hover"]
+bg_color = Color(0.24, 0.16, 0.1, 0.95)
+border_width_left = 4
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.82, 0.3, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_pressed"]
+bg_color = Color(0.35, 0.12, 0.05, 0.95)
+border_width_left = 4
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.45, 0.2, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_char_panel"]
+bg_color = Color(0.08, 0.07, 0.1, 0.82)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.75, 0.58, 0.25, 0.4)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="Gradient" id="Gradient_shadow"]
+colors = PackedColorArray(0, 0, 0, 0.75, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_shadow"]
+gradient = SubResource("Gradient_shadow")
+width = 180
+height = 44
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m0"]
+atlas = ExtResource("3_idletex")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m1"]
+atlas = ExtResource("3_idletex")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m2"]
+atlas = ExtResource("3_idletex")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m3"]
+atlas = ExtResource("3_idletex")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_metal_slug_char"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m3")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("level_1_button", "level_2_button", "level_3_button", "endless_button", "options_button", "how_to_play_button", "quit_button", "title_label", "subtitle_label", "difficulty_label", "version_label", "hint_label", "background")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_menuscript")
+level_1_button = NodePath("Root/LeftSection/ScrollContainer/ContentBox/CampaignGroup/Level1Button")
+level_2_button = NodePath("Root/LeftSection/ScrollContainer/ContentBox/CampaignGroup/Level2Button")
+level_3_button = NodePath("Root/LeftSection/ScrollContainer/ContentBox/CampaignGroup/Level3Button")
+endless_button = NodePath("Root/LeftSection/ScrollContainer/ContentBox/SpecialGroup/EndlessButton")
+options_button = NodePath("Root/LeftSection/ScrollContainer/ContentBox/SystemRow/OptionsButton")
+how_to_play_button = NodePath("Root/LeftSection/ScrollContainer/ContentBox/SystemRow/HowToPlayButton")
+quit_button = NodePath("Root/LeftSection/ScrollContainer/ContentBox/SystemRow/QuitButton")
+title_label = NodePath("Root/LeftSection/TitleBox/TitleLabel")
+subtitle_label = NodePath("Root/LeftSection/TitleBox/SubtitleLabel")
+difficulty_label = NodePath("Root/LeftSection/TitleBox/DiffCard/DiffLabel")
+version_label = NodePath("Root/BottomBar/VersionLabel")
+hint_label = NodePath("Root/BottomBar/HintLabel")
+background = NodePath("Background")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_bgtex")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="VignetteOverlay" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.04, 0.02, 0.03, 0.55)
+
+[node name="LeftGlow" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 560.0
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.08, 0.02, 0.03, 0.45)
+
+[node name="Root" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="LeftSection" type="VBoxContainer" parent="Root"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 50.0
+offset_top = 25.0
+offset_right = 520.0
+offset_bottom = -50.0
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="TitleBox" type="VBoxContainer" parent="Root/LeftSection"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Badge" type="PanelContainer" parent="Root/LeftSection/TitleBox"]
+custom_minimum_size = Vector2(200, 26)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_header_badge")
+
+[node name="BadgeText" type="Label" parent="Root/LeftSection/TitleBox/Badge"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.35, 1)
+theme_override_font_sizes/font_size = 12
+text = "  ☣ PROTOCOLO DE SUPERVIVENCIA  "
+horizontal_alignment = 1
+
+[node name="TitleLabel" type="Label" parent="Root/LeftSection/TitleBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.92, 0.65, 1)
+theme_override_colors/font_shadow_color = Color(0.5, 0.05, 0.05, 0.9)
+theme_override_colors/font_outline_color = Color(0.18, 0.02, 0.02, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 52
+text = "Motion Dead"
+
+[node name="SubtitleLabel" type="Label" parent="Root/LeftSection/TitleBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.72, 0.55, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.9)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 14
+text = "Combate y resistencia táctica contra la horda"
+
+[node name="DiffCard" type="PanelContainer" parent="Root/LeftSection/TitleBox"]
+custom_minimum_size = Vector2(0, 26)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_diff_card")
+
+[node name="DiffLabel" type="Label" parent="Root/LeftSection/TitleBox/DiffCard"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.45, 1)
+theme_override_font_sizes/font_size = 12
+text = "  ⚙ DIFICULTAD: NORMAL  "
+
+[node name="ModeSelectorBox" type="HBoxContainer" parent="Root/LeftSection"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Mode2DButton" type="Button" parent="Root/LeftSection/ModeSelectorBox"]
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 14
+theme_override_styles/hover = SubResource("StyleBoxFlat_tab_active")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_tab_active")
+theme_override_styles/normal = SubResource("StyleBoxFlat_tab_active")
+text = "🕹️ MODO 2D (TOP-DOWN)"
+
+[node name="Mode3DButton" type="Button" parent="Root/LeftSection/ModeSelectorBox"]
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 14
+theme_override_styles/hover = SubResource("StyleBoxFlat_tab_active")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_tab_active")
+theme_override_styles/normal = SubResource("StyleBoxFlat_tab_inactive")
+text = "🎮 MODO 3D (FPS SULFUR)"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Root/LeftSection"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="ContentBox" type="VBoxContainer" parent="Root/LeftSection/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="CampaignHeader" type="Label" parent="Root/LeftSection/ScrollContainer/ContentBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.78, 0.35, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.9)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 13
+text = "— MISIONES DE CAMPAÑA 2D —"
+
+[node name="CampaignGroup" type="VBoxContainer" parent="Root/LeftSection/ScrollContainer/ContentBox"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Level1Button" type="Button" parent="Root/LeftSection/ScrollContainer/ContentBox/CampaignGroup"]
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_pressed")
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_normal")
+text = "▶  ESCENARIO 1 · Las Calles"
+alignment = 0
+
+[node name="Level2Button" type="Button" parent="Root/LeftSection/ScrollContainer/ContentBox/CampaignGroup"]
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_pressed")
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_normal")
+text = "▶  ESCENARIO 2 · Zona Industrial"
+alignment = 0
+
+[node name="Level3Button" type="Button" parent="Root/LeftSection/ScrollContainer/ContentBox/CampaignGroup"]
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_pressed")
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_normal")
+text = "💀  JEFE FINAL · Núcleo Titán"
+alignment = 0
+
+[node name="SpecialHeader" type="Label" parent="Root/LeftSection/ScrollContainer/ContentBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.7, 0.4, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.9)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 13
+text = "— MODO DE SUPERVIVENCIA —"
+
+[node name="SpecialGroup" type="VBoxContainer" parent="Root/LeftSection/ScrollContainer/ContentBox"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="EndlessButton" type="Button" parent="Root/LeftSection/ScrollContainer/ContentBox/SpecialGroup"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_pressed")
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_normal")
+text = "∞  MODO INFINITO · Oleadas Ilimitadas"
+alignment = 0
+
+[node name="HSeparator" type="HSeparator" parent="Root/LeftSection/ScrollContainer/ContentBox"]
+layout_mode = 2
+
+[node name="SystemRow" type="HBoxContainer" parent="Root/LeftSection/ScrollContainer/ContentBox"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="OptionsButton" type="Button" parent="Root/LeftSection/ScrollContainer/ContentBox/SystemRow"]
+custom_minimum_size = Vector2(0, 38)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_pressed")
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_normal")
+text = "⚙ Opciones"
+
+[node name="HowToPlayButton" type="Button" parent="Root/LeftSection/ScrollContainer/ContentBox/SystemRow"]
+custom_minimum_size = Vector2(0, 38)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_pressed")
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_normal")
+text = "? Guía"
+
+[node name="QuitButton" type="Button" parent="Root/LeftSection/ScrollContainer/ContentBox/SystemRow"]
+custom_minimum_size = Vector2(0, 38)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_hover_color = Color(1, 0.4, 0.4, 1)
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_pressed")
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_normal")
+text = "✕ Salir"
+
+[node name="CharacterShowcase" type="Panel" parent="Root"]
+light_mask = 3
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -580.0
+offset_top = 40.0
+offset_right = -50.0
+offset_bottom = -50.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_char_panel")
+
+[node name="HeaderBox" type="HBoxContainer" parent="Root/CharacterShowcase"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 18.0
+offset_bottom = 44.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="HeaderLabel" type="Label" parent="Root/CharacterShowcase/HeaderBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.4, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.9)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 15
+text = "★ EXPEDIENTE DE COMBATE ★"
+
+[node name="FloorShadow" type="TextureRect" parent="Root/CharacterShowcase"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -110.0
+offset_top = 40.0
+offset_right = 110.0
+offset_bottom = 84.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_shadow")
+expand_mode = 1
+
+[node name="CharacterSprite" type="AnimatedSprite2D" parent="Root/CharacterShowcase"]
+texture_filter = 1
+position = Vector2(265, 230)
+scale = Vector2(4.5, 4.5)
+sprite_frames = SubResource("SpriteFrames_metal_slug_char")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="DossierCard" type="VBoxContainer" parent="Root/CharacterShowcase"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = -180.0
+offset_right = -24.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_constants/separation = 6
+alignment = 1
+
+[node name="OpName" type="Label" parent="Root/CharacterShowcase/DossierCard"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.9, 0.6, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.9)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 22
+text = "OPERADOR SOBREVIVIENTE"
+horizontal_alignment = 1
+
+[node name="ClassInfo" type="Label" parent="Root/CharacterShowcase/DossierCard"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.82, 0.86, 0.92, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.8)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 14
+text = "MODO SELECCIONADO: 2D CLÁSICO"
+horizontal_alignment = 1
+
+[node name="WeaponInfo" type="Label" parent="Root/CharacterShowcase/DossierCard"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.72, 0.78, 0.85, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.8)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 14
+text = "ARSENAL: PISTOLA 9MM · SUBFUSIL · ESCOPETA"
+horizontal_alignment = 1
+
+[node name="StatusTag" type="Label" parent="Root/CharacterShowcase/DossierCard"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 0.95, 0.5, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.8)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 15
+text = "● LISTO PARA EL DESPLIEGUE"
+horizontal_alignment = 1
+
+[node name="BottomBar" type="HBoxContainer" parent="Root"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 50.0
+offset_top = -40.0
+offset_right = -50.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 20
+
+[node name="HintLabel" type="Label" parent="Root/BottomBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.8, 0.82, 0.85, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.9)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 14
+text = "💡 Elige entre Modo 2D o Modo 3D y selecciona tu escenario para desplegarte."
+
+[node name="VersionLabel" type="Label" parent="Root/BottomBar"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.65, 0.68, 0.72, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.9)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 13
+text = "v0.3 · Godot 4.7"
+horizontal_alignment = 2

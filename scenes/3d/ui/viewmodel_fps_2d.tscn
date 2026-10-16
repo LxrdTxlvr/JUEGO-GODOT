@@ -1,0 +1,74 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/3d/ui/viewmodel_fps_2d.gd" id="1_vm2dscript"]
+[ext_resource type="Texture2D" path="res://assets/generated/viewmodel_pistol_idle_hd.png" id="2_pistoltex"]
+[ext_resource type="Texture2D" path="res://assets/generated/viewmodel_knife_slash_hd.png" id="3_knifetex"]
+
+[node name="ViewModelFPS2D" type="Control"]
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+script = ExtResource("1_vm2dscript")
+
+[node name="WeaponAnchor" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -512.0
+offset_top = -512.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 0
+grow_vertical = 0
+pivot_offset = Vector2(350, 420)
+mouse_filter = 2
+
+[node name="WeaponRect" type="TextureRect" parent="WeaponAnchor"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_pistoltex")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="KnifeAnchor" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -512.0
+offset_top = -512.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 0
+grow_vertical = 0
+pivot_offset = Vector2(350, 420)
+mouse_filter = 2
+
+[node name="KnifeRect" type="TextureRect" parent="KnifeAnchor"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_knifetex")
+expand_mode = 1
+stretch_mode = 5

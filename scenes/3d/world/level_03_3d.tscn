@@ -1,0 +1,218 @@
+[gd_scene format=3 uid="uid://lvl3d003scene"]
+
+[ext_resource type="Script" path="res://scripts/3d/world/level_3d.gd" id="1_lvlscript"]
+[ext_resource type="PackedScene" uid="uid://pl3dfps001" path="res://scenes/3d/entities/player_3d.tscn" id="2_playerscene"]
+[ext_resource type="Material" path="res://assets/materials_3d/mat_asphalt_road.tres" id="3_scorchedmat"]
+[ext_resource type="PackedScene" uid="uid://d3dcrate001" path="res://scenes/3d/props/crate_3d.tscn" id="4_cratescene"]
+[ext_resource type="PackedScene" uid="uid://e3dbarrel001" path="res://scenes/3d/props/barrel_3d.tscn" id="5_barrelscene"]
+[ext_resource type="Script" path="res://scripts/3d/entities/zombie_spawner_3d.gd" id="6_spawnerscript"]
+[ext_resource type="PackedScene" uid="uid://hud3dscene001" path="res://scenes/3d/ui/hud_3d.tscn" id="7_hudscene"]
+[ext_resource type="PackedScene" uid="uid://pa3dammo001" path="res://scenes/3d/pickups/pickup_ammo_3d.tscn" id="8_ammoscene"]
+[ext_resource type="PackedScene" uid="uid://pm3dmed001" path="res://scenes/3d/pickups/pickup_medkit_3d.tscn" id="9_medscene"]
+[ext_resource type="PackedScene" uid="uid://pw3dweap001" path="res://scenes/3d/pickups/pickup_weapon_3d.tscn" id="10_weaponpickup"]
+
+[sub_resource type="Environment" id="Environment_boss"]
+background_mode = 1
+background_color = Color(0.14, 0.03, 0.03, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.38, 0.12, 0.08, 1)
+ambient_light_energy = 1.05
+tonemap_mode = 2
+tonemap_exposure = 1.10
+ssao_enabled = true
+ssao_radius = 1.5
+ssao_intensity = 2.0
+glow_enabled = true
+glow_intensity = 0.85
+glow_strength = 1.0
+glow_bloom = 0.3
+glow_blend_mode = 1
+glow_hdr_threshold = 0.95
+fog_enabled = true
+fog_light_color = Color(0.35, 0.08, 0.05, 1)
+fog_density = 0.018
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.024
+volumetric_fog_albedo = Color(0.32, 0.10, 0.08, 1)
+volumetric_fog_emission = Color(0.06, 0.02, 0.01, 1)
+volumetric_fog_length = 45.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ground"]
+size = Vector3(64, 1, 64)
+
+[sub_resource type="BoxMesh" id="BoxMesh_scorched"]
+material = ExtResource("3_scorchedmat")
+size = Vector3(64, 1, 64)
+
+[sub_resource type="StandardMaterial3D" id="Mat_Sandbags"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.35, 0.28, 0.18, 1)
+roughness = 0.9
+
+[sub_resource type="BoxMesh" id="BoxMesh_Sandbag"]
+material = SubResource("Mat_Sandbags")
+size = Vector3(3.2, 0.9, 0.8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_Sandbag"]
+size = Vector3(3.2, 0.9, 0.8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_barrier_horiz"]
+size = Vector3(64, 6, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_barrier_vert"]
+size = Vector3(2, 6, 64)
+
+[node name="Level03_3D" type="Node3D" groups=["level"]]
+script = ExtResource("1_lvlscript")
+level_title = "El Núcleo del Titán - Escenario Final"
+music_track = "level_final"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_boss")
+
+[node name="InfernalSun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.866, -0.354, 0.354, 0, 0.707, 0.707, -0.5, -0.612, 0.612, 0, 20, 0)
+light_color = Color(1, 0.45, 0.25, 1)
+light_energy = 1.2
+shadow_enabled = true
+
+[node name="Ground" type="StaticBody3D" parent="."]
+collision_layer = 1
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_ground")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+mesh = SubResource("BoxMesh_scorched")
+
+[node name="PerimeterBarriers" type="Node3D" parent="."]
+
+[node name="BarrierNorth" type="StaticBody3D" parent="PerimeterBarriers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -31.5)
+collision_layer = 1
+collision_mask = 6
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PerimeterBarriers/BarrierNorth"]
+shape = SubResource("BoxShape3D_barrier_horiz")
+
+[node name="BarrierSouth" type="StaticBody3D" parent="PerimeterBarriers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 31.5)
+collision_layer = 1
+collision_mask = 6
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PerimeterBarriers/BarrierSouth"]
+shape = SubResource("BoxShape3D_barrier_horiz")
+
+[node name="BarrierWest" type="StaticBody3D" parent="PerimeterBarriers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.5, 3, 0)
+collision_layer = 1
+collision_mask = 6
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PerimeterBarriers/BarrierWest"]
+shape = SubResource("BoxShape3D_barrier_vert")
+
+[node name="BarrierEast" type="StaticBody3D" parent="PerimeterBarriers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.5, 3, 0)
+collision_layer = 1
+collision_mask = 6
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PerimeterBarriers/BarrierEast"]
+shape = SubResource("BoxShape3D_barrier_vert")
+
+[node name="DefenseLine" type="Node3D" parent="."]
+
+[node name="Sandbag1" type="StaticBody3D" parent="DefenseLine"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.45, -5)
+collision_layer = 1
+collision_mask = 6
+
+[node name="Mesh" type="MeshInstance3D" parent="DefenseLine/Sandbag1"]
+mesh = SubResource("BoxMesh_Sandbag")
+
+[node name="Col" type="CollisionShape3D" parent="DefenseLine/Sandbag1"]
+shape = SubResource("BoxShape3D_Sandbag")
+
+[node name="Sandbag2" type="StaticBody3D" parent="DefenseLine"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.45, -5)
+collision_layer = 1
+collision_mask = 6
+
+[node name="Mesh" type="MeshInstance3D" parent="DefenseLine/Sandbag2"]
+mesh = SubResource("BoxMesh_Sandbag")
+
+[node name="Col" type="CollisionShape3D" parent="DefenseLine/Sandbag2"]
+shape = SubResource("BoxShape3D_Sandbag")
+
+[node name="Sandbag3" type="StaticBody3D" parent="DefenseLine"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -12, 0.45, 8)
+collision_layer = 1
+collision_mask = 6
+
+[node name="Mesh" type="MeshInstance3D" parent="DefenseLine/Sandbag3"]
+mesh = SubResource("BoxMesh_Sandbag")
+
+[node name="Col" type="CollisionShape3D" parent="DefenseLine/Sandbag3"]
+shape = SubResource("BoxShape3D_Sandbag")
+
+[node name="Sandbag4" type="StaticBody3D" parent="DefenseLine"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 12, 0.45, 8)
+collision_layer = 1
+collision_mask = 6
+
+[node name="Mesh" type="MeshInstance3D" parent="DefenseLine/Sandbag4"]
+mesh = SubResource("BoxMesh_Sandbag")
+
+[node name="Col" type="CollisionShape3D" parent="DefenseLine/Sandbag4"]
+shape = SubResource("BoxShape3D_Sandbag")
+
+[node name="FireBarrels" type="Node3D" parent="."]
+
+[node name="FireBarrel1" parent="FireBarrels" instance=ExtResource("5_barrelscene")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -4)
+
+[node name="FireBarrel2" parent="FireBarrels" instance=ExtResource("5_barrelscene")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -4)
+
+[node name="FireBarrel3" parent="FireBarrels" instance=ExtResource("5_barrelscene")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12)
+
+[node name="EmergencyLight" type="OmniLight3D" parent="FireBarrels"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+light_color = Color(1, 0.2, 0.1, 1)
+light_energy = 3.2
+omni_range = 16.0
+
+[node name="Props" type="Node3D" parent="."]
+
+[node name="CrateStack" parent="Props" instance=ExtResource("4_cratescene")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 2)
+
+[node name="CrateStack2" parent="Props" instance=ExtResource("4_cratescene")]
+transform = Transform3D(0.866, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866, 8, 0, 2)
+
+[node name="Pickups" type="Node3D" parent="."]
+
+[node name="WeaponCrate" parent="Pickups" instance=ExtResource("10_weaponpickup")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+
+[node name="PickupAmmo3D" parent="Pickups" instance=ExtResource("8_ammoscene")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -2)
+
+[node name="PickupMedkit3D" parent="Pickups" instance=ExtResource("9_medscene")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -2)
+
+[node name="Player3D" parent="." instance=ExtResource("2_playerscene")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 2)
+
+[node name="ZombieSpawner3D" type="Node3D" parent="."]
+script = ExtResource("6_spawnerscript")
+max_alive = 25
+spawn_interval = 1.6
+total_waves = 5
+is_boss_level = true
+
+[node name="HUD3D" parent="." instance=ExtResource("7_hudscene")]

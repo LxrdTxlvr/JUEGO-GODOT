@@ -1,0 +1,291 @@
+[gd_scene format=3 uid="uid://vm3dfps001"]
+
+[ext_resource type="Script" path="res://scripts/3d/entities/viewmodel_3d.gd" id="1_vmscript"]
+
+[sub_resource type="StandardMaterial3D" id="Mat_GunSteelDark"]
+render_priority = 10
+no_depth_test = true
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.2, 0.22, 0.26, 1)
+metallic = 0.5
+roughness = 0.4
+
+[sub_resource type="StandardMaterial3D" id="Mat_GunSteelSilver"]
+render_priority = 10
+no_depth_test = true
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.48, 0.52, 0.58, 1)
+metallic = 0.7
+roughness = 0.3
+
+[sub_resource type="StandardMaterial3D" id="Mat_GripBrown"]
+render_priority = 10
+no_depth_test = true
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.32, 0.22, 0.16, 1)
+roughness = 0.8
+
+[sub_resource type="StandardMaterial3D" id="Mat_SightGreen"]
+render_priority = 11
+no_depth_test = true
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.2, 1, 0.35, 1)
+emission_enabled = true
+emission = Color(0.2, 1, 0.35, 1)
+emission_energy_multiplier = 2.0
+
+[sub_resource type="StandardMaterial3D" id="Mat_SightRed"]
+render_priority = 11
+no_depth_test = true
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(1, 0.2, 0.2, 1)
+emission_enabled = true
+emission = Color(1, 0.2, 0.2, 1)
+emission_energy_multiplier = 2.5
+
+[sub_resource type="StandardMaterial3D" id="Mat_SleeveNavy"]
+render_priority = 10
+no_depth_test = true
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.18, 0.26, 0.38, 1)
+roughness = 0.7
+
+[sub_resource type="StandardMaterial3D" id="Mat_GloveKhaki"]
+render_priority = 10
+no_depth_test = true
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.48, 0.38, 0.28, 1)
+roughness = 0.6
+
+[sub_resource type="StandardMaterial3D" id="Mat_FlashOrange"]
+render_priority = 12
+no_depth_test = true
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(1, 0.85, 0.25, 1)
+emission_enabled = true
+emission = Color(1, 0.7, 0.1, 1)
+emission_energy_multiplier = 4.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_PistolFrame"]
+material = SubResource("Mat_GunSteelDark")
+size = Vector3(0.038, 0.052, 0.18)
+
+[sub_resource type="BoxMesh" id="BoxMesh_PistolSlide"]
+material = SubResource("Mat_GunSteelSilver")
+size = Vector3(0.04, 0.042, 0.17)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_PistolBarrel"]
+material = SubResource("Mat_GunSteelDark")
+top_radius = 0.011
+bottom_radius = 0.011
+height = 0.06
+
+[sub_resource type="BoxMesh" id="BoxMesh_SightFront"]
+material = SubResource("Mat_SightGreen")
+size = Vector3(0.007, 0.014, 0.01)
+
+[sub_resource type="BoxMesh" id="BoxMesh_SightRear"]
+material = SubResource("Mat_GunSteelDark")
+size = Vector3(0.03, 0.014, 0.008)
+
+[sub_resource type="BoxMesh" id="BoxMesh_PistolGrip"]
+material = SubResource("Mat_GripBrown")
+size = Vector3(0.034, 0.12, 0.065)
+
+[sub_resource type="BoxMesh" id="BoxMesh_SmgBody"]
+material = SubResource("Mat_GunSteelDark")
+size = Vector3(0.046, 0.07, 0.28)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_SmgBarrel"]
+material = SubResource("Mat_GunSteelSilver")
+top_radius = 0.014
+bottom_radius = 0.014
+height = 0.1
+
+[sub_resource type="BoxMesh" id="BoxMesh_SmgMag"]
+material = SubResource("Mat_GunSteelDark")
+size = Vector3(0.026, 0.16, 0.045)
+
+[sub_resource type="BoxMesh" id="BoxMesh_SmgSight"]
+material = SubResource("Mat_SightRed")
+size = Vector3(0.008, 0.008, 0.008)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ShotgunBody"]
+material = SubResource("Mat_GunSteelDark")
+size = Vector3(0.055, 0.075, 0.32)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ShotgunBarrel"]
+material = SubResource("Mat_GunSteelSilver")
+top_radius = 0.018
+bottom_radius = 0.018
+height = 0.18
+
+[sub_resource type="BoxMesh" id="BoxMesh_ShotgunPump"]
+material = SubResource("Mat_GripBrown")
+size = Vector3(0.052, 0.045, 0.11)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ArmSleeve"]
+material = SubResource("Mat_SleeveNavy")
+size = Vector3(0.09, 0.09, 0.28)
+
+[sub_resource type="BoxMesh" id="BoxMesh_Glove"]
+material = SubResource("Mat_GloveKhaki")
+size = Vector3(0.065, 0.065, 0.09)
+
+[sub_resource type="SphereMesh" id="SphereMesh_MuzzleFlash"]
+material = SubResource("Mat_FlashOrange")
+radius = 0.055
+height = 0.11
+
+[sub_resource type="BoxMesh" id="BoxMesh_KnifeHandle"]
+material = SubResource("Mat_GripBrown")
+size = Vector3(0.024, 0.034, 0.13)
+
+[sub_resource type="BoxMesh" id="BoxMesh_KnifeGuard"]
+material = SubResource("Mat_GunSteelDark")
+size = Vector3(0.018, 0.065, 0.016)
+
+[sub_resource type="BoxMesh" id="BoxMesh_KnifeBlade"]
+material = SubResource("Mat_GunSteelSilver")
+size = Vector3(0.007, 0.042, 0.22)
+
+[sub_resource type="PrismMesh" id="PrismMesh_KnifeTip"]
+material = SubResource("Mat_GunSteelSilver")
+left_to_right = 0.0
+size = Vector3(0.007, 0.042, 0.08)
+
+[node name="ViewModel3D" type="Node3D"]
+script = ExtResource("1_vmscript")
+
+[node name="Pistol" type="Node3D" parent="."]
+
+[node name="Frame" type="MeshInstance3D" parent="Pistol"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, -0.01)
+mesh = SubResource("BoxMesh_PistolFrame")
+
+[node name="Slide" type="Node3D" parent="Pistol"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.045, -0.01)
+
+[node name="SlideMesh" type="MeshInstance3D" parent="Pistol/Slide"]
+mesh = SubResource("BoxMesh_PistolSlide")
+
+[node name="SightFront" type="MeshInstance3D" parent="Pistol/Slide"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.026, -0.075)
+mesh = SubResource("BoxMesh_SightFront")
+
+[node name="SightRear" type="MeshInstance3D" parent="Pistol/Slide"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.026, 0.075)
+mesh = SubResource("BoxMesh_SightRear")
+
+[node name="Barrel" type="MeshInstance3D" parent="Pistol"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.045, -0.11)
+mesh = SubResource("CylinderMesh_PistolBarrel")
+
+[node name="Grip" type="MeshInstance3D" parent="Pistol"]
+transform = Transform3D(1, 0, 0, 0, 0.965926, -0.258819, 0, 0.258819, 0.965926, 0, -0.055, 0.04)
+mesh = SubResource("BoxMesh_PistolGrip")
+
+[node name="SMG" type="Node3D" parent="."]
+visible = false
+
+[node name="Receiver" type="MeshInstance3D" parent="SMG"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.02, -0.05)
+mesh = SubResource("BoxMesh_SmgBody")
+
+[node name="Bolt" type="Node3D" parent="SMG"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, -0.02)
+
+[node name="BoltMesh" type="MeshInstance3D" parent="SMG/Bolt"]
+mesh = SubResource("BoxMesh_PistolSlide")
+
+[node name="Barrel" type="MeshInstance3D" parent="SMG"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.02, -0.21)
+mesh = SubResource("CylinderMesh_SmgBarrel")
+
+[node name="Magazine" type="MeshInstance3D" parent="SMG"]
+transform = Transform3D(1, 0, 0, 0, 0.965926, -0.258819, 0, 0.258819, 0.965926, 0, -0.08, -0.03)
+mesh = SubResource("BoxMesh_SmgMag")
+
+[node name="SightHolo" type="MeshInstance3D" parent="SMG"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.065, -0.08)
+mesh = SubResource("BoxMesh_SmgSight")
+
+[node name="Shotgun" type="Node3D" parent="."]
+visible = false
+
+[node name="Receiver" type="MeshInstance3D" parent="Shotgun"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.02, -0.06)
+mesh = SubResource("BoxMesh_ShotgunBody")
+
+[node name="DoubleBarrel" type="MeshInstance3D" parent="Shotgun"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.03, -0.25)
+mesh = SubResource("CylinderMesh_ShotgunBarrel")
+
+[node name="Pump" type="Node3D" parent="Shotgun"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.01, -0.2)
+
+[node name="PumpMesh" type="MeshInstance3D" parent="Shotgun/Pump"]
+mesh = SubResource("BoxMesh_ShotgunPump")
+
+[node name="RightArm" type="Node3D" parent="."]
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 0.05, -0.06, 0.12)
+
+[node name="Sleeve" type="MeshInstance3D" parent="RightArm"]
+transform = Transform3D(0.965926, 0.12941, -0.224144, -0.106456, 0.985925, 0.12941, 0.235948, -0.101344, 0.966456, 0.08, -0.08, 0.08)
+mesh = SubResource("BoxMesh_ArmSleeve")
+
+[node name="Glove" type="MeshInstance3D" parent="RightArm"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03, 0.01, -0.07)
+mesh = SubResource("BoxMesh_Glove")
+
+[node name="LeftArm" type="Node3D" parent="."]
+transform = Transform3D(0.906308, 0, -0.422618, 0, 1, 0, 0.422618, 0, 0.906308, -0.1, -0.1, 0.1)
+
+[node name="Sleeve" type="MeshInstance3D" parent="LeftArm"]
+transform = Transform3D(0.939693, -0.17101, 0.296198, 0.163176, 0.984808, 0.05058, -0.300627, -0.0007, 0.953742, -0.08, -0.06, 0.06)
+mesh = SubResource("BoxMesh_ArmSleeve")
+
+[node name="Glove" type="MeshInstance3D" parent="LeftArm"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08, 0.03, -0.06)
+mesh = SubResource("BoxMesh_Glove")
+
+[node name="MuzzleFlash" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.045, -0.16)
+visible = false
+mesh = SubResource("SphereMesh_MuzzleFlash")
+
+[node name="MuzzleLight" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.045, -0.16)
+visible = false
+light_color = Color(1, 0.85, 0.3, 1)
+light_energy = 3.8
+omni_range = 4.0
+
+[node name="CombatKnife" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08, -0.12, -0.22)
+visible = false
+
+[node name="Handle" type="MeshInstance3D" parent="CombatKnife"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.065)
+mesh = SubResource("BoxMesh_KnifeHandle")
+
+[node name="Guard" type="MeshInstance3D" parent="CombatKnife"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.005)
+mesh = SubResource("BoxMesh_KnifeGuard")
+
+[node name="Blade" type="MeshInstance3D" parent="CombatKnife"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.005, -0.12)
+mesh = SubResource("BoxMesh_KnifeBlade")
+
+[node name="BladeTip" type="MeshInstance3D" parent="CombatKnife"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.005, -0.27)
+mesh = SubResource("PrismMesh_KnifeTip")
+

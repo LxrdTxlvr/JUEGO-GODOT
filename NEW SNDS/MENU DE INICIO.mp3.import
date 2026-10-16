@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bj12p7mw3j7bg"
+path="res://.godot/imported/MENU DE INICIO.mp3-90c3030d18024a0fc96e19ee58100695.mp3str"
+
+[deps]
+
+source_file="res://NEW SNDS/MENU DE INICIO.mp3"
+dest_files=["res://.godot/imported/MENU DE INICIO.mp3-90c3030d18024a0fc96e19ee58100695.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

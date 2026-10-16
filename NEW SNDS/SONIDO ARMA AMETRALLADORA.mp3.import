@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://71pfo47smcen"
+path="res://.godot/imported/SONIDO ARMA AMETRALLADORA.mp3-14f87aa00bb19d0ffc4c6c520bb793c3.mp3str"
+
+[deps]
+
+source_file="res://NEW SNDS/SONIDO ARMA AMETRALLADORA.mp3"
+dest_files=["res://.godot/imported/SONIDO ARMA AMETRALLADORA.mp3-14f87aa00bb19d0ffc4c6c520bb793c3.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

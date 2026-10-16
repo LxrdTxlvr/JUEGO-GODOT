@@ -1,0 +1,201 @@
+[gd_scene load_steps=2 format=3 uid="uid://d4mtq8vnbky3p"]
+
+[ext_resource type="Script" path="res://scripts/ui/options_panel.gd" id="1_optionsscript"]
+
+[node name="OptionsPanel" type="Control"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_optionsscript")
+
+[node name="Frame" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Layout" type="VBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 34.0
+offset_top = 22.0
+offset_right = -34.0
+offset_bottom = -22.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+
+[node name="TitleLabel" type="Label" parent="Layout"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.97, 0.83, 0.45, 1)
+theme_override_font_sizes/font_size = 32
+text = "OPCIONES"
+
+[node name="VolumeRow" type="HBoxContainer" parent="Layout"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="VolumeLabel" type="Label" parent="Layout/VolumeRow"]
+custom_minimum_size = Vector2(210, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "🔊 Volumen general"
+vertical_alignment = 1
+
+[node name="VolumeSlider" type="HSlider" parent="Layout/VolumeRow"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 100.0
+step = 1.0
+value = 80.0
+
+[node name="VolumeValue" type="Label" parent="Layout/VolumeRow"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.96, 0.82, 0.4, 1)
+theme_override_font_sizes/font_size = 17
+text = "80%"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="MusicRow" type="HBoxContainer" parent="Layout"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="MusicLabel" type="Label" parent="Layout/MusicRow"]
+custom_minimum_size = Vector2(210, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "🎵 Música de fondo"
+vertical_alignment = 1
+
+[node name="MusicSlider" type="HSlider" parent="Layout/MusicRow"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 100.0
+step = 1.0
+value = 80.0
+
+[node name="MusicValue" type="Label" parent="Layout/MusicRow"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.96, 0.82, 0.4, 1)
+theme_override_font_sizes/font_size = 17
+text = "80%"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="SfxRow" type="HBoxContainer" parent="Layout"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="SfxLabel" type="Label" parent="Layout/SfxRow"]
+custom_minimum_size = Vector2(210, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "💥 Efectos y armas"
+vertical_alignment = 1
+
+[node name="SfxSlider" type="HSlider" parent="Layout/SfxRow"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 100.0
+step = 1.0
+value = 85.0
+
+[node name="SfxValue" type="Label" parent="Layout/SfxRow"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.96, 0.82, 0.4, 1)
+theme_override_font_sizes/font_size = 17
+text = "85%"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="FootstepRow" type="HBoxContainer" parent="Layout"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="FootstepLabel" type="Label" parent="Layout/FootstepRow"]
+custom_minimum_size = Vector2(210, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "👟 Pasos del jugador"
+vertical_alignment = 1
+
+[node name="FootstepSlider" type="HSlider" parent="Layout/FootstepRow"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 100.0
+step = 1.0
+value = 80.0
+
+[node name="FootstepValue" type="Label" parent="Layout/FootstepRow"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.96, 0.82, 0.4, 1)
+theme_override_font_sizes/font_size = 17
+text = "80%"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="AudioSep" type="HSeparator" parent="Layout"]
+layout_mode = 2
+
+[node name="FullscreenRow" type="HBoxContainer" parent="Layout"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="FullscreenLabel" type="Label" parent="Layout/FullscreenRow"]
+custom_minimum_size = Vector2(210, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Pantalla completa"
+vertical_alignment = 1
+
+[node name="FullscreenCheck" type="CheckBox" parent="Layout/FullscreenRow"]
+layout_mode = 2
+
+[node name="DifficultyRow" type="HBoxContainer" parent="Layout"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="DifficultyLabel" type="Label" parent="Layout/DifficultyRow"]
+custom_minimum_size = Vector2(210, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Dificultad"
+vertical_alignment = 1
+
+[node name="DifficultyButton" type="OptionButton" parent="Layout/DifficultyRow"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="DifficultyHint" type="Label" parent="Layout"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.66, 0.69, 0.72, 1)
+theme_override_font_sizes/font_size = 15
+text = "La dificultad cambia cuántos zombis aparecen y cuánto daño hacen."
+autowrap_mode = 3
+
+[node name="Spacer" type="Control" parent="Layout"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="CloseButton" type="Button" parent="Layout"]
+layout_mode = 2
+text = "VOLVER"

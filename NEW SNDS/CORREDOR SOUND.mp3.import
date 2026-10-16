@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bdbdegv8pfciv"
+path="res://.godot/imported/CORREDOR SOUND.mp3-39b5bc29c226a000068fb7cee398fc2e.mp3str"
+
+[deps]
+
+source_file="res://NEW SNDS/CORREDOR SOUND.mp3"
+dest_files=["res://.godot/imported/CORREDOR SOUND.mp3-39b5bc29c226a000068fb7cee398fc2e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

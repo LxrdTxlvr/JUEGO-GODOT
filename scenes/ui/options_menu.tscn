@@ -1,0 +1,106 @@
+[gd_scene load_steps=4 format=3 uid="uid://bw8kqt3mnvp7x"]
+
+[ext_resource type="Script" path="res://scripts/ui/options_menu.gd" id="1_optmenuscript"]
+[ext_resource type="Texture2D" path="res://assets/generated/menu_bg_city.png" id="2_bgtex"]
+[ext_resource type="PackedScene" path="res://scenes/ui/options_panel.tscn" id="3_optionspanel"]
+
+[node name="OptionsMenu" type="Control"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_optmenuscript")
+
+[node name="Background" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_bgtex")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Dim" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.02, 0.02, 0.04, 0.72)
+
+[node name="Root" type="Control" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TitleLabel" type="Label" parent="Root"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -420.0
+offset_top = 26.0
+offset_right = 420.0
+offset_bottom = 90.0
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.95, 0.86, 0.6, 1)
+theme_override_colors/font_outline_color = Color(0.28, 0.02, 0.02, 0.95)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 48
+text = "OPCIONES"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OptionsPanel" parent="Root" instance=ExtResource("3_optionspanel")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -360.0
+offset_top = -236.0
+offset_right = 360.0
+offset_bottom = 224.0
+grow_horizontal = 2
+grow_vertical = 2
+show_header = false
+
+[node name="HintLabel" type="Label" parent="Root"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = -112.0
+offset_right = -40.0
+offset_bottom = -84.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.78, 0.8, 0.82, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.9)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 17
+text = "Los cambios se guardan automáticamente."
+horizontal_alignment = 1
+
+[node name="BackButton" type="Button" parent="Root"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -160.0
+offset_top = -76.0
+offset_right = 160.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "VOLVER"

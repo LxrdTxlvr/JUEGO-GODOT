@@ -1,0 +1,111 @@
+[gd_scene format=3 uid="uid://b4ntk7vqmhp8e"]
+
+[ext_resource type="Script" uid="uid://b175xy2fjraqc" path="res://scripts/entities/enemies/zombie.gd" id="1_zombiescript"]
+[ext_resource type="Script" uid="uid://csynsn82jarsi" path="res://scripts/components/health_component.gd" id="2_healthscript"]
+[ext_resource type="PackedScene" uid="uid://bn2kxavrtxq4e" path="res://scenes/entities/pickups/pickup_ammo.tscn" id="3_ammodrop"]
+[ext_resource type="Texture2D" uid="uid://bq5xfdgregi1t" path="res://assets/generated/zombie_brute_walk.png" id="4_gjhmu"]
+[ext_resource type="PackedScene" uid="uid://dqxv1n8bkh2rp" path="res://scenes/entities/pickups/pickup_medkit.tscn" id="4_medkitdrop"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1665o"]
+atlas = ExtResource("4_gjhmu")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yf14y"]
+atlas = ExtResource("4_gjhmu")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ilwfe"]
+atlas = ExtResource("4_gjhmu")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t44ox"]
+atlas = ExtResource("4_gjhmu")
+region = Rect2(288, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u1kpc"]
+atlas = ExtResource("4_gjhmu")
+region = Rect2(384, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_41juc"]
+atlas = ExtResource("4_gjhmu")
+region = Rect2(480, 0, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_icem4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1665o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yf14y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ilwfe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t44ox")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u1kpc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_41juc")
+}],
+"loop": 1,
+"name": &"heavy_slow_walking",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_brutebody"]
+radius = 20.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_brutesensor"]
+radius = 44.0
+
+[node name="ZombieBrute" type="CharacterBody2D" unique_id=785897355 groups=["enemies"]]
+collision_layer = 4
+collision_mask = 5
+motion_mode = 1
+script = ExtResource("1_zombiescript")
+display_name = "Bruto"
+score_value = 60
+move_speed = 48.0
+acceleration = 420.0
+separation_radius = 44.0
+separation_force = 460.0
+knockback_resistance = 0.6
+attack_damage = 20.0
+attack_range = 60.0
+attack_cooldown = 1.9
+attack_windup = 0.55
+walk_animation = &"heavy_slow_walking"
+walk_speed_scale = 0.85
+idle_speed_scale = 0.35
+drop_scenes = Array[PackedScene]([ExtResource("4_medkitdrop"), ExtResource("3_ammodrop")])
+drop_chance = 0.55
+health_component = NodePath("HealthComponent")
+animated_sprite = NodePath("AnimatedSprite2D")
+separation_sensor = NodePath("SeparationSensor")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1255308155]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_icem4")
+animation = &"heavy_slow_walking"
+autoplay = "heavy_slow_walking"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=175386545]
+position = Vector2(0, 12)
+shape = SubResource("CircleShape2D_brutebody")
+
+[node name="HealthComponent" type="Node" parent="." unique_id=2060295389]
+script = ExtResource("2_healthscript")
+max_health = 200.0
+current_health = 200.0
+
+[node name="SeparationSensor" type="Area2D" parent="." unique_id=539781050]
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SeparationSensor" unique_id=377126871]
+shape = SubResource("CircleShape2D_brutesensor")

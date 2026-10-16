@@ -1,0 +1,136 @@
+[gd_scene format=3 uid="uid://0b3dbrute001"]
+
+[ext_resource type="Script" path="res://scripts/3d/entities/zombie_3d.gd" id="1_zombiescript"]
+[ext_resource type="Texture2D" path="res://assets/generated/zombie_brute_walk_hd.png" id="2_brutetex"]
+[ext_resource type="Texture2D" path="res://assets/generated/zombie_brute_front_walk_hd.png" id="3_fronttex"]
+[ext_resource type="Texture2D" path="res://assets/generated/zombie_brute_walk_normal.png" id="4_normaltex"]
+[ext_resource type="Material" path="res://assets/materials_3d/mat_shadow_disc.tres" id="5_shadowmat"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_brute"]
+radius = 0.65
+height = 2.6
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b0"]
+atlas = ExtResource("2_brutetex")
+region = Rect2(0, 0, 768, 768)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1"]
+atlas = ExtResource("2_brutetex")
+region = Rect2(768, 0, 768, 768)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b2"]
+atlas = ExtResource("2_brutetex")
+region = Rect2(1536, 0, 768, 768)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b3"]
+atlas = ExtResource("2_brutetex")
+region = Rect2(2304, 0, 768, 768)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b4"]
+atlas = ExtResource("2_brutetex")
+region = Rect2(3072, 0, 768, 768)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b5"]
+atlas = ExtResource("2_brutetex")
+region = Rect2(3840, 0, 768, 768)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bf0"]
+atlas = ExtResource("3_fronttex")
+region = Rect2(0, 0, 768, 768)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bf1"]
+atlas = ExtResource("3_fronttex")
+region = Rect2(768, 0, 768, 768)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bf2"]
+atlas = ExtResource("3_fronttex")
+region = Rect2(1536, 0, 768, 768)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bf3"]
+atlas = ExtResource("3_fronttex")
+region = Rect2(2304, 0, 768, 768)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_brute"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b5")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bf0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bf1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bf2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bf3")
+}],
+"loop": true,
+"name": &"walking_front",
+"speed": 5.0
+}]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_shadow"]
+material = ExtResource("5_shadowmat")
+top_radius = 0.8
+bottom_radius = 0.8
+height = 0.02
+
+[node name="ZombieBrute3D" type="CharacterBody3D" groups=["enemy"]]
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("1_zombiescript")
+display_name = "Bruto 3D"
+max_health = 160.0
+move_speed = 2.4
+attack_damage = 16.0
+attack_range = 2.2
+knockback_resistance = 0.65
+sound_groan = "zombie_brute"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, 0)
+shape = SubResource("CapsuleShape3D_brute")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.63, 0)
+billboard = 2
+shaded = true
+alpha_cut = 1
+texture_filter = 5
+sprite_frames = SubResource("SpriteFrames_brute")
+animation = &"walking_front"
+pixel_size = 0.00425
+
+[node name="ShadowDisc" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.02, 0)
+mesh = SubResource("CylinderMesh_shadow")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
+unit_size = 7.0
+max_distance = 32.0
+bus = &"Master"

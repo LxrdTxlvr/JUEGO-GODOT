@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cwywwb8ivf5y"
+path="res://.godot/imported/PERDIDA DE NIVEL.mp3-84bc49cc0bef5f1436b81196edbe325d.mp3str"
+
+[deps]
+
+source_file="res://NEW SNDS/PERDIDA DE NIVEL.mp3"
+dest_files=["res://.godot/imported/PERDIDA DE NIVEL.mp3-84bc49cc0bef5f1436b81196edbe325d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

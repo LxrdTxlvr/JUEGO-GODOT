@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://qi1im3pnxa28"
+path="res://.godot/imported/FINAL BOSS SOUND.mp3-26ada75cb926687aa833b87f2b050f68.mp3str"
+
+[deps]
+
+source_file="res://NEW SNDS/FINAL BOSS SOUND.mp3"
+dest_files=["res://.godot/imported/FINAL BOSS SOUND.mp3-26ada75cb926687aa833b87f2b050f68.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

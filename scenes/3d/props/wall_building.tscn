@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://b3dwallbld001"]
+
+[ext_resource type="Material" path="res://assets/materials_3d/mat_brick_wall.tres" id="1_brick"]
+[ext_resource type="Material" path="res://assets/materials_3d/mat_sidewalk.tres" id="2_trim"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_main"]
+size = Vector3(4, 4, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wall"]
+material = ExtResource("1_brick")
+size = Vector3(4, 3.7, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_trim"]
+material = ExtResource("2_trim")
+size = Vector3(4.1, 0.3, 1.1)
+
+[node name="WallBuilding" type="StaticBody3D"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("BoxShape3D_main")
+
+[node name="MeshWall" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.15, 0)
+mesh = SubResource("BoxMesh_wall")
+
+[node name="MeshTrim" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, 0)
+mesh = SubResource("BoxMesh_trim")
+
+[node name="MeshCornice" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.0, 0)
+mesh = SubResource("BoxMesh_trim")

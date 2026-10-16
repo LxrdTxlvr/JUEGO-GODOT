@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bibvabv2rfypk"]
+
+[ext_resource type="Script" path="res://tests/test_3d_features.gd" id="1_testscript"]
+
+[node name="Test3DFeatures" type="Node3D"]
+script = ExtResource("1_testscript")

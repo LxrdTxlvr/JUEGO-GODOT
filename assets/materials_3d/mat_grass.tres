@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3]
+
+[ext_resource type="Texture2D" uid="uid://bw3m7rl454bpt" path="res://assets/generated/tile_grass.png" id="1_tex"]
+
+[resource]
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.75, 0.9, 0.7, 1)
+albedo_texture = ExtResource("1_tex")
+metallic_specular = 0.05
+roughness = 0.95
+texture_filter = 0
+texture_repeat = true
+uv1_scale = Vector3(3, 3, 3)

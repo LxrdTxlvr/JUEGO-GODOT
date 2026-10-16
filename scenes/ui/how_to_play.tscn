@@ -1,0 +1,125 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3kxp8vmqtn6h"]
+
+[ext_resource type="Script" path="res://scripts/ui/how_to_play.gd" id="1_howtoscript"]
+[ext_resource type="Texture2D" path="res://assets/generated/menu_bg_city.png" id="2_bgtex"]
+
+[node name="HowToPlay" type="Control"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_howtoscript")
+
+[node name="Background" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_bgtex")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Dim" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.02, 0.02, 0.04, 0.78)
+
+[node name="Root" type="Control" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TitleLabel" type="Label" parent="Root"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -420.0
+offset_top = 34.0
+offset_right = 420.0
+offset_bottom = 100.0
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.95, 0.86, 0.6, 1)
+theme_override_colors/font_outline_color = Color(0.28, 0.02, 0.02, 0.95)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 52
+text = "CÓMO JUGAR"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel" type="Panel" parent="Root"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -566.0
+offset_top = -232.0
+offset_right = 566.0
+offset_bottom = 224.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ControlsTitle" type="Label" parent="Root/Panel"]
+offset_left = 34.0
+offset_top = 26.0
+offset_right = 520.0
+offset_bottom = 56.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.96, 0.8, 0.45, 1)
+theme_override_font_sizes/font_size = 24
+text = "CONTROLES"
+
+[node name="ControlsContainer" type="VBoxContainer" parent="Root/Panel"]
+offset_left = 34.0
+offset_top = 68.0
+offset_right = 520.0
+offset_bottom = 400.0
+mouse_filter = 2
+theme_override_constants/separation = 12
+
+[node name="RulesTitle" type="Label" parent="Root/Panel"]
+offset_left = 576.0
+offset_top = 26.0
+offset_right = 1098.0
+offset_bottom = 56.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.96, 0.8, 0.45, 1)
+theme_override_font_sizes/font_size = 24
+text = "SUPERVIVENCIA"
+
+[node name="RulesLabel" type="RichTextLabel" parent="Root/Panel"]
+offset_left = 576.0
+offset_top = 68.0
+offset_right = 1098.0
+offset_bottom = 442.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.87, 0.88, 0.9, 1)
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+scroll_active = false
+
+[node name="BackButton" type="Button" parent="Root"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -160.0
+offset_top = -84.0
+offset_right = 160.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "VOLVER"

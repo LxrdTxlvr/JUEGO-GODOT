@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ctm2vq8nwkx4p"]
+
+[ext_resource type="Script" path="res://tests/spawn_bounds_test.gd" id="1_testscript"]
+
+[node name="SpawnBoundsTest" type="Node2D"]
+script = ExtResource("1_testscript")

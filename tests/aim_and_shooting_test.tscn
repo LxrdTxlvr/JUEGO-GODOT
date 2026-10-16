@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://c8nqm36v2fplw"]
+
+[ext_resource type="Script" path="res://tests/aim_and_shooting_test.gd" id="1_testscript"]
+
+[node name="AimAndShootingTest" type="Node2D"]
+script = ExtResource("1_testscript")

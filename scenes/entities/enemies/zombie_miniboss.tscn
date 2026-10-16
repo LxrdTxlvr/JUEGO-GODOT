@@ -1,0 +1,113 @@
+[gd_scene format=3 uid="uid://c7x0pk3qm8n1t"]
+
+[ext_resource type="Script" uid="uid://b175xy2fjraqc" path="res://scripts/entities/enemies/zombie.gd" id="1_zombiescript"]
+[ext_resource type="Script" uid="uid://csynsn82jarsi" path="res://scripts/components/health_component.gd" id="2_healthscript"]
+[ext_resource type="PackedScene" path="res://scenes/entities/pickups/pickup_weapon.tscn" id="3_weapondrop"]
+[ext_resource type="PackedScene" uid="uid://bn2kw9vrtxq4e" path="res://scenes/entities/pickups/pickup_ammo.tscn" id="4_ammodrop"]
+[ext_resource type="PackedScene" uid="uid://dqxv1n8bkh2rp" path="res://scenes/entities/pickups/pickup_medkit.tscn" id="5_medkitdrop"]
+[ext_resource type="Texture2D" path="res://assets/generated/zombie_miniboss_walk.png" id="6_brutesheet"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mb0"]
+atlas = ExtResource("6_brutesheet")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mb1"]
+atlas = ExtResource("6_brutesheet")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mb2"]
+atlas = ExtResource("6_brutesheet")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mb3"]
+atlas = ExtResource("6_brutesheet")
+region = Rect2(288, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mb4"]
+atlas = ExtResource("6_brutesheet")
+region = Rect2(384, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mb5"]
+atlas = ExtResource("6_brutesheet")
+region = Rect2(480, 0, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_miniboss"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mb0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mb1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mb2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mb3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mb4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mb5")
+}],
+"loop": 1,
+"name": &"miniboss_walk",
+"speed": 6.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bossbody"]
+radius = 28.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bosssensor"]
+radius = 56.0
+
+[node name="ZombieMiniboss" type="CharacterBody2D" groups=["enemies", "miniboss"]]
+collision_layer = 4
+collision_mask = 5
+motion_mode = 1
+script = ExtResource("1_zombiescript")
+display_name = "Miniboss Mutante"
+score_value = 300
+move_speed = 75.0
+acceleration = 500.0
+separation_radius = 56.0
+separation_force = 550.0
+knockback_resistance = 0.85
+attack_damage = 28.0
+attack_range = 75.0
+attack_cooldown = 1.6
+attack_windup = 0.45
+walk_animation = &"miniboss_walk"
+walk_speed_scale = 1.0
+idle_speed_scale = 0.4
+drop_scenes = Array[PackedScene]([ExtResource("3_weapondrop"), ExtResource("4_ammodrop"), ExtResource("5_medkitdrop")])
+drop_chance = 1.0
+health_component = NodePath("HealthComponent")
+animated_sprite = NodePath("AnimatedSprite2D")
+separation_sensor = NodePath("SeparationSensor")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_miniboss")
+animation = &"miniboss_walk"
+autoplay = "miniboss_walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 14)
+shape = SubResource("CircleShape2D_bossbody")
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("2_healthscript")
+max_health = 1200.0
+current_health = 1200.0
+
+[node name="SeparationSensor" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SeparationSensor"]
+shape = SubResource("CircleShape2D_bosssensor")
